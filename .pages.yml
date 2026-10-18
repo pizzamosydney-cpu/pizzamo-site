@@ -1,0 +1,110 @@
+# Pages CMS configuration (https://pagescms.org/docs/configuration/)
+# Editors change menu, hours and a banner message. Layout and code stay out of reach.
+media:
+  input: images/photos
+  output: /images/photos
+
+content:
+  - name: notice
+    label: "Banner message (e.g. closed today)"
+    type: file
+    path: data/site.json
+    format: json
+    fields:
+      - name: notice
+        label: Message (leave empty to hide the banner)
+        type: text
+      - name: notice_style
+        label: Colour
+        type: select
+        options:
+          values:
+            - name: info
+              label: Info (green)
+            - name: alert
+              label: Important (red)
+
+  - name: hours
+    label: Opening hours
+    type: file
+    path: data/hours.json
+    format: json
+    fields:
+      - name: days
+        label: Days
+        type: object
+        list:
+          min: 7
+          max: 7
+          collapsible:
+            collapsed: true
+            summary: "{fields.day}"
+        fields:
+          - name: day
+            label: Day
+            type: string
+            required: true
+            readonly: true
+          - name: closed
+            label: Closed all day
+            type: boolean
+          - name: open
+            label: Opens (24h, e.g. 17:00)
+            type: string
+          - name: close
+            label: Closes (24h, e.g. 22:30)
+            type: string
+
+  - name: menu
+    label: "Menu & prices"
+    type: file
+    path: data/menu.json
+    format: json
+    fields:
+      - name: categories
+        label: Categories
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.name}"
+        fields:
+          - name: name
+            label: Category name
+            type: string
+            required: true
+          - name: note
+            label: Small note next to the name (optional)
+            type: string
+          - name: items
+            label: Items
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{fields.name}"
+            fields:
+              - name: name
+                label: Name
+                type: string
+                required: true
+              - name: description
+                label: Ingredients / description
+                type: text
+              - name: price
+                label: Price (number, e.g. 24 or 10.50)
+                type: number
+                required: true
+              - name: vegetarian
+                label: Vegetarian (V)
+                type: boolean
+              - name: vegan
+                label: Vegan (VG)
+                type: boolean
+              - name: available
+                label: Available (untick to hide, e.g. sold out)
+                type: boolean
+                default: true
+              - name: add_on
+                label: Show price as an extra (+$)
+                type: boolean
