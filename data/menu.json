@@ -111,7 +111,6 @@
         },
         {
           "name": "Garlic and Cheese",
-          "description": "",
           "price": 20,
           "vegetarian": true,
           "vegan": false,
@@ -131,11 +130,9 @@
     },
     {
       "name": "Sides",
-      "note": "",
       "items": [
         {
           "name": "Chips (medium)",
-          "description": "",
           "price": 8,
           "vegetarian": false,
           "vegan": false,
@@ -144,7 +141,6 @@
         },
         {
           "name": "Chips (large)",
-          "description": "",
           "price": 12,
           "vegetarian": false,
           "vegan": false,
@@ -172,8 +168,7 @@
       ]
     },
     {
-      "name": "Dolci",
-      "note": "",
+      "name": "Dolci2",
       "items": [
         {
           "name": "Pistacchio Straccetti",
@@ -197,7 +192,6 @@
     },
     {
       "name": "Drinks",
-      "note": "",
       "items": [
         {
           "name": "Soft drink / water",
@@ -216,7 +210,6 @@
       "items": [
         {
           "name": "Gluten-free base",
-          "description": "",
           "price": 5,
           "vegetarian": false,
           "vegan": false,
@@ -225,7 +218,6 @@
         },
         {
           "name": "Dairy-free / lactose-free cheese",
-          "description": "",
           "price": 3,
           "vegetarian": false,
           "vegan": false,
