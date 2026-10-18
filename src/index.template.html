@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PizzAmò by Basilico | Wood-fired pizza truck in Homebush</title>
+  <meta name="description" content="Italian wood-fired pizza from a food truck in Homebush, Sydney. Order online and pick up.">
+  <meta name="theme-color" content="#003633">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <meta property="og:title" content="PizzAmò | Italian wood-fired pizza in Homebush">
+  <meta property="og:description" content="Italian wood-fired pizza from a food truck in Homebush, Sydney. Order online and pick up.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:url" content="https://pizzamo.com.au">
+  <meta property="og:image" content="https://pizzamo.com.au/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=21">
+  <link rel="canonical" href="https://pizzamo.com.au/">
+
+  <!-- Business details for Google. EDIT: phone once known. Opening hours are added by js/site.js from the hours table. -->
+  <script type="application/ld+json" id="business">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "PizzAmò",
+    "url": "https://pizzamo.com.au",
+    "servesCuisine": ["Italian", "Pizza"],
+    "telephone": "+61 415 702 946",
+    "email": "ciao@pizzamo.com.au",
+    "image": "https://pizzamo.com.au/images/og-image.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "161 Parramatta Rd",
+      "addressLocality": "Homebush",
+      "addressRegion": "NSW",
+      "postalCode": "2140",
+      "addressCountry": "AU"
+    },
+    "hasMenu": "https://pizzamo.com.au/#menu"
+  }
+  </script>
+  <script src="js/site.js?v=21" defer></script>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="hdr">
+  <div class="container hdr__inner">
+    <a href="#top" class="hdr__brand" aria-label="PizzAmò, back to top">
+      <picture><img src="images/logo-wordmark.png" srcset="images/logo-wordmark@2x.png 2x" alt="PizzAmò" width="132" height="46"></picture>
+    </a>
+    <nav class="hdr__nav" aria-label="Sections">
+      <a href="#menu">Menu</a>
+      <a href="#find-us">Find us</a>
+      <a href="https://basilicopizzacatering.com.au" target="_blank" rel="noopener">Events</a>
+    </nav>
+    <a class="btn btn--order hdr__cta js-order" href="https://basilicopizzacatering.com.au" target="_blank" rel="noopener">Book your event</a>
+  </div>
+</header>
+<!--NOTICE-->
+
+<main>
+
+<!-- ═══════════ HERO ═══════════
+     Truck hero: logo left + truck photo right (desktop), stacked on phones. Alternatives: hero-test.html -->
+<section class="hero hero--truck" id="top">
+  <div class="hero__top">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <h1 class="hero__logo"><img src="images/logo-by-basilico-transparent.png" srcset="images/logo-by-basilico-transparent@2x.png 2x" alt="PizzAmò, Italian wood-fired pizza, by Basilico" width="1280" height="533"></h1>
+        <p class="hero__truck"><svg viewBox="0 0 64 40" width="38" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M4 6h38v24H4z"/><path d="M42 12h10l8 9v9H42"/><path d="M10 12h26v8H10z" fill="currentColor" fill-opacity=".25"/><circle cx="16" cy="32" r="4.5" fill="#e2432a"/><circle cx="50" cy="32" r="4.5" fill="#e2432a"/></svg><span>Food truck</span><span class="dot">·</span><a class="js-maps" href="https://www.google.com/maps/search/?api=1&query=161+Parramatta+Rd+Homebush+NSW+2140" target="_blank" rel="noopener">161 Parramatta Rd</a></p>
+        <p class="hero__today" id="today"></p><!-- filled in from the hours table -->
+        <div class="hero__actions">
+          <a class="btn btn--order js-order" href="https://basilicopizzacatering.com.au" target="_blank" rel="noopener">Book your event</a>
+        </div>
+      </div>
+    </div>
+    <figure class="hero__bg">
+      <img src="images/photos/truck-wide.jpg" alt="The PizzAmò food truck at dusk on Parramatta Road" width="1080" height="700">
+      <figcaption>The truck · 161 Parramatta Rd</figcaption>
+    </figure>
+  </div>
+  <div class="hero__row">
+    <img src="images/photos/pizza-margherita-3.jpg" alt="Margherita with mozzarella and a charred, puffy crust" width="1000" height="1000">
+    <img src="images/photos/pizza-pepperoni-3.jpg" alt="Pepperoni pizza fresh from the wood oven" loading="lazy" width="1000" height="1000">
+    <img src="images/photos/pizza-capricciosa-3.jpg" alt="Capricciosa with ham, mushrooms, artichokes and olives" loading="lazy" width="1000" height="1000">
+  </div>
+</section>
+
+<div class="tricolore" aria-hidden="true"></div>
+<!-- ═══════════ MENU ═══════════
+     EDIT: one <li> per item. Price in the .menu__price span.
+     Tags: <abbr class="menu__tag" title="Vegetarian">V</abbr> · VG = vegan · GF = gluten-free base available
+     Keep in sync with Bopple when prices change.
+     Source: current truck menu on basilicopizzacatering.com.au (Oct 2026). Confirm with Salvatore. -->
+<section class="section section--paper" id="menu">
+  <div class="container">
+    <span class="label">Menu</span>
+    <h2>Someone took a slice.<br>Get your own.</h2>
+    <div class="tricolore tricolore--short" aria-hidden="true"></div>
+
+    <!--MENU-->
+    <p class="menu__legend">V vegetarian · Gluten-free base and dairy-free cheese available on any pizza.</p>
+    <div class="menu__cta js-orderonly"><a class="btn btn--order js-order" href="https://basilicopizzacatering.com.au" target="_blank" rel="noopener">Book your event</a></div>
+  </div>
+</section>
+
+<div class="tricolore" aria-hidden="true"></div>
+<!-- ═══════════ WHERE & WHEN ═══════════
+     EDIT hours here only: "17:00–21:00" or "Closed". 24h times.
+     The hero line ("Open now · until 21:00") and the Google details read from this table.
+     Hours confirmed by Salvatore (Oct 2026). -->
+<section class="section" id="find-us">
+  <div class="container find">
+    <div>
+      <span class="label">Find us</span>
+      <h2>Where &amp; when</h2>
+      <address class="find__address">
+        161 Parramatta Rd<br>
+        Homebush NSW 2140
+      </address>
+      <!-- <p class="find__note">Parking / how to find the truck. TODO</p> -->
+      <a class="btn btn--ghost js-maps" href="https://www.google.com/maps/search/?api=1&query=161+Parramatta+Rd+Homebush+NSW+2140" target="_blank" rel="noopener">Open in Google Maps</a>
+      <!-- EDIT: map query = the truck's exact spot -->
+      <iframe class="find__map" title="Map: PizzAmò, 161 Parramatta Rd, Homebush" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=161+Parramatta+Rd,+Homebush+NSW+2140&z=16&output=embed"></iframe>
+    </div>
+
+    <div>
+      <h3 class="find__hours-title">Opening hours</h3>
+      <table class="find__hours" id="hours">
+        <tbody>
+<!--HOURS-->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EVENTS ═══════════ -->
+<section class="events" aria-label="Events">
+  <div class="container events__inner">
+    <div>
+      <span class="label">Events &amp; catering</span>
+      <h2>Book your next event with us.</h2>
+      <p>Birthdays, weddings, office parties: our wood-fired pizza comes to you with <span class="bas">Basilico</span> Pizza Catering.</p>
+    </div>
+    <a class="btn btn--order" href="https://basilicopizzacatering.com.au" target="_blank" rel="noopener">Book an event</a>
+  </div>
+</section>
+
+<div class="tricolore" aria-hidden="true"></div>
+<!-- ═══════════ FAQ ═══════════
+     EDIT: answers marked TODO need Salvatore. Remove the "todo" class once answered. -->
+<section class="section section--dark" id="faq">
+  <div class="container faq">
+    <span class="label">Good to know</span>
+    <h2>Questions</h2>
+    <!-- HIDDEN until answered:
+    <details>
+      <summary>How long does an online order take?</summary>
+      <p class="todo">TODO: e.g. "Usually 15–20 minutes. You get a text when it's ready."</p>
+    </details>
+    -->
+    <details>
+      <summary>Do you have gluten-free or vegan options?</summary>
+      <p>Yes. Any pizza can be made on a gluten-free base (+$5) or with dairy-free cheese (+$3). Vegetarian pizzas are marked V on the menu.</p>
+    </details>
+    <!-- HIDDEN until answered:
+    <details>
+      <summary>Where do I park?</summary>
+      <p class="todo">TODO: where to stop near the truck.</p>
+    </details>
+    -->
+    <details>
+      <summary>Can you cater my event?</summary>
+      <p>Not from the truck. For events, contact <a href="https://basilicopizzacatering.com.au" target="_blank" rel="noopener"><span class="bas">Basilico</span> Pizza Catering</a>.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="section section--dark about" id="about" aria-label="About">
+  <div class="container about__grid">
+    <div class="about__inner">
+      <span class="label">About</span>
+      <h2>PizzAmò, by <span class="bas">Basilico</span>.</h2>
+      <p class="about__text"><span class="bas">Basilico</span> is one of Sydney's most popular pizza catering businesses, bringing authentic Neapolitan pizza to homes and events for over three successful years. As a full-time catering business, we dedicate our week to preparing homemade ingredients, refining our recipes and caring for every detail. From private parties to corporate celebrations, we serve freshly baked pizza with warm Italian hospitality.</p>
+    </div>
+    <img class="about__photo" src="images/photos/stretching-dough.jpg" alt="Topping a pizza by hand in the truck" loading="lazy" width="1000" height="1000">
+  </div>
+</section>
+
+
+<div class="tricolore" aria-hidden="true"></div>
+<!-- ═══════════ CONTACT ═══════════
+     Netlify Forms: Netlify picks this form up on deploy (name="contact"). Submissions show in the Netlify
+     dashboard → Forms; set email notifications there to send them to the PizzAmò inbox. -->
+<section class="section" id="contact">
+  <div class="container contact">
+    <div>
+      <span class="label">Contact</span>
+      <h2>Say ciao</h2>
+      <p class="contact__intro">Questions, feedback or a big order for the office? Send a message and we'll get back to you.</p>
+    </div>
+    <form class="contact__form" id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="_gotcha">
+      <input type="hidden" name="form-name" value="contact">
+      <label>Name<input type="text" name="name" required autocomplete="name"></label>
+      <label>Email<input type="email" name="email" required autocomplete="email"></label>
+      <label><span>Phone <span class="opt">(optional)</span></span><input type="tel" name="phone" autocomplete="tel"></label>
+      <label>Message<textarea name="message" rows="4" required></textarea></label>
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="contact__privacy">We only use your details to reply. See our <a href="privacy.html">privacy policy</a>.</p>
+      <button class="btn btn--order" type="submit">Send</button>
+      <p class="contact__status" id="contact-status" role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════
+     TODO: Instagram (uncomment once confirmed). -->
+<footer class="ftr">
+  <div class="container ftr__inner">
+    <div class="ftr__brand">
+      <img src="images/logo-by-basilico-footer.png" srcset="images/logo-by-basilico-footer@2x.png 2x" alt="PizzAmò by Basilico" width="340" height="141" class="ftr__logo">
+      <p>Wood-fired pizza truck<br>161 Parramatta Rd, Homebush NSW 2140<br><a href="tel:+61415702946">0415 702 946</a></p>
+      <p class="ftr__hours" id="ftr-hours"></p><!-- filled in from the hours table -->
+    </div>
+    <img class="ftr__tile" src="images/pizza-tile.png" alt="" width="140" height="140">
+    <ul class="ftr__links">
+      <li><a class="js-order" href="https://basilicopizzacatering.com.au" target="_blank" rel="noopener">Book your event</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#find-us">Find us</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="mailto:ciao@pizzamo.com.au">ciao@pizzamo.com.au</a></li>
+      <!-- <li><a href="https://instagram.com/pizzamo" target="_blank" rel="noopener">Instagram</a></li> -->
+    </ul>
+    <p class="ftr__catering">Planning an event? <a href="https://basilicopizzacatering.com.au" target="_blank" rel="noopener">Book with <span class="bas">Basilico</span> Pizza Catering</a></p>
+    <p class="ftr__small">
+      © <span id="year">2026</span> PizzAmò · ABN 92 337 664 922 · <a href="privacy.html">Privacy</a> · Website by <a href="https://foodleads.io" target="_blank" rel="noopener">foodleads.io</a>
+    </p>
+  </div>
+</footer>
+
+<!-- Phone only: order button always under the thumb -->
+<div class="orderbar">
+  <a class="btn btn--order js-order" href="https://basilicopizzacatering.com.au" target="_blank" rel="noopener">Book your event</a>
+  <a class="btn btn--ghost js-maps" href="https://www.google.com/maps/search/?api=1&query=161+Parramatta+Rd+Homebush+NSW+2140" target="_blank" rel="noopener">Directions</a>
+</div>
+
+</body>
+</html>

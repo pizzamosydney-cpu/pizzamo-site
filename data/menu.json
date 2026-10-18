@@ -1,0 +1,238 @@
+{
+  "categories": [
+    {
+      "name": "Pizze rosse",
+      "note": "Tomato base",
+      "items": [
+        {
+          "name": "Margherita",
+          "description": "San Marzano tomato, fior di latte, parmigiano reggiano, fresh basil",
+          "price": 24,
+          "vegetarian": true,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "Supreme",
+          "description": "Pepperoni, mushrooms, capsicum, olives",
+          "price": 26,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "Meat Lovers",
+          "description": "Pepperoni, ham, Italian sausage",
+          "price": 26,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "Ham and Pineapple",
+          "description": "Double smoked ham, sweet pineapple",
+          "price": 24,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "Diavola",
+          "description": "Spicy salami, black olives",
+          "price": 24,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "Vegetariana",
+          "description": "Grilled eggplant, onion, capsicum, mushrooms, parmigiano",
+          "price": 25,
+          "vegetarian": true,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "San Daniele",
+          "description": "Prosciutto San Daniele, fresh rocket",
+          "price": 26,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "Pepperoni",
+          "description": "Premium pepperoni",
+          "price": 24,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "Capricciosa",
+          "description": "Double smoked ham, olives, artichoke, mushroom, basil",
+          "price": 28,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "BBQ Chicken",
+          "description": "BBQ sauce base, chicken, onion",
+          "price": 26,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        }
+      ]
+    },
+    {
+      "name": "Pizze bianche",
+      "note": "No tomato",
+      "items": [
+        {
+          "name": "Salsiccia e Patate",
+          "description": "Potato, Italian sausage, mushrooms, rosemary",
+          "price": 26,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "Garlic and Cheese",
+          "description": "",
+          "price": 20,
+          "vegetarian": true,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "Pizza Sandwich",
+          "description": "Folded dough, fior di latte, Prosciutto San Daniele, rocket",
+          "price": 27,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "note": "",
+      "items": [
+        {
+          "name": "Chips (medium)",
+          "description": "",
+          "price": 8,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "Chips (large)",
+          "description": "",
+          "price": 12,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "Arancini Boscaiola",
+          "description": "50g each, minimum 3 pieces",
+          "price": 10.5,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "Dip",
+          "description": "Mayonnaise, ketchup or BBQ sauce",
+          "price": 2,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        }
+      ]
+    },
+    {
+      "name": "Dolci",
+      "note": "",
+      "items": [
+        {
+          "name": "Pistacchio Straccetti",
+          "description": "Fried pizza dough, pistachio, icing sugar",
+          "price": 14,
+          "vegetarian": true,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        },
+        {
+          "name": "Nutella Pizza",
+          "description": "Nutella, fresh strawberries, icing sugar",
+          "price": 18,
+          "vegetarian": true,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "note": "",
+      "items": [
+        {
+          "name": "Soft drink / water",
+          "description": "Coca-Cola, Coke No Sugar, Sunkist or bottled water",
+          "price": 4,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": false
+        }
+      ]
+    },
+    {
+      "name": "Extras",
+      "note": "Any pizza",
+      "items": [
+        {
+          "name": "Gluten-free base",
+          "description": "",
+          "price": 5,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": true
+        },
+        {
+          "name": "Dairy-free / lactose-free cheese",
+          "description": "",
+          "price": 3,
+          "vegetarian": false,
+          "vegan": false,
+          "available": true,
+          "add_on": true
+        }
+      ]
+    }
+  ]
+}

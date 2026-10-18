@@ -1,0 +1,8 @@
+# Netlify runs the build on every change (including edits made in the CMS) and publishes dist/.
+# If build.js finds invalid data it stops, and the previous live version stays online.
+[build]
+  command = "node build.js"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
