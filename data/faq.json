@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "question": "How long does an online order take?",
+      "answer": "",
+      "active": false
+    },
+    {
+      "question": "Do you have gluten-free or vegan options?",
+      "answer": "Yes. Any pizza can be made on a gluten-free base (+$5) or with dairy-free cheese (+$3). Vegetarian pizzas are marked V on the menu.",
+      "active": true
+    },
+    {
+      "question": "Where do I park?",
+      "answer": "",
+      "active": false
+    },
+    {
+      "question": "Can you cater my event?",
+      "answer": "Not from the truck. For events, contact [Basilico Pizza Catering](https://basilicopizzacatering.com.au).",
+      "active": true
+    }
+  ]
+}

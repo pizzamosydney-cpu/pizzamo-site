@@ -33,8 +33,8 @@
     "name": "PizzAmò",
     "url": "https://pizzamo.com.au",
     "servesCuisine": ["Italian", "Pizza"],
-    "telephone": "+61 415 702 946",
-    "email": "ciao@pizzamo.com.au",
+    "telephone": "%%LD_PHONE%%",
+    "email": "%%LD_EMAIL%%",
     "image": "https://pizzamo.com.au/images/og-image.jpg",
     "address": {
       "@type": "PostalAddress",
@@ -47,7 +47,8 @@
     "hasMenu": "https://pizzamo.com.au/#menu"
   }
   </script>
-  <script src="js/site.js?v=21" defer></script>
+  <!--CONFIG-->
+  <script src="js/site.js?v=23" defer></script>
 </head>
 <body>
 
@@ -164,26 +165,7 @@
   <div class="container faq">
     <span class="label">Good to know</span>
     <h2>Questions</h2>
-    <!-- HIDDEN until answered:
-    <details>
-      <summary>How long does an online order take?</summary>
-      <p class="todo">TODO: e.g. "Usually 15–20 minutes. You get a text when it's ready."</p>
-    </details>
-    -->
-    <details>
-      <summary>Do you have gluten-free or vegan options?</summary>
-      <p>Yes. Any pizza can be made on a gluten-free base (+$5) or with dairy-free cheese (+$3). Vegetarian pizzas are marked V on the menu.</p>
-    </details>
-    <!-- HIDDEN until answered:
-    <details>
-      <summary>Where do I park?</summary>
-      <p class="todo">TODO: where to stop near the truck.</p>
-    </details>
-    -->
-    <details>
-      <summary>Can you cater my event?</summary>
-      <p>Not from the truck. For events, contact <a href="https://basilicopizzacatering.com.au" target="_blank" rel="noopener"><span class="bas">Basilico</span> Pizza Catering</a>.</p>
-    </details>
+<!--FAQ-->
   </div>
 </section>
 
@@ -233,7 +215,7 @@
   <div class="container ftr__inner">
     <div class="ftr__brand">
       <img src="images/logo-by-basilico-footer.png" srcset="images/logo-by-basilico-footer@2x.png 2x" alt="PizzAmò by Basilico" width="340" height="141" class="ftr__logo">
-      <p>Wood-fired pizza truck<br>161 Parramatta Rd, Homebush NSW 2140<br><a href="tel:+61415702946">0415 702 946</a></p>
+      <p>Wood-fired pizza truck<br>161 Parramatta Rd, Homebush NSW 2140<!--PHONE_BR--></p>
       <p class="ftr__hours" id="ftr-hours"></p><!-- filled in from the hours table -->
     </div>
     <img class="ftr__tile" src="images/pizza-tile.png" alt="" width="140" height="140">
@@ -242,8 +224,7 @@
       <li><a href="#menu">Menu</a></li>
       <li><a href="#find-us">Find us</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="mailto:ciao@pizzamo.com.au">ciao@pizzamo.com.au</a></li>
-      <!-- <li><a href="https://instagram.com/pizzamo" target="_blank" rel="noopener">Instagram</a></li> -->
+      <!--CONTACT-->
     </ul>
     <p class="ftr__catering">Planning an event? <a href="https://basilicopizzacatering.com.au" target="_blank" rel="noopener">Book with <span class="bas">Basilico</span> Pizza Catering</a></p>
     <p class="ftr__small">

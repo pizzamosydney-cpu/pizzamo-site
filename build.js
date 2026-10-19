@@ -73,6 +73,44 @@ const site = read('data/site.json');
 const notice = (site.notice || '').trim();
 const noticeHtml = notice ? `<div class="notice notice--${site.notice_style === 'alert' ? 'alert' : 'info'}" role="status">${esc(notice)}</div>` : '';
 
+// ---------- FAQ (data/faq.json) ----------
+const isHttps = (u) => /^https:\/\/[^\s"'<>]+$/.test(u || '');
+const isDate = (d) => /^\d{4}-\d{2}-\d{2}$/.test(d || '') && !Number.isNaN(Date.parse(d + 'T00:00:00Z'));
+const rich = (t) => esc(t).replace(/\n/g, '<br>')                     // escaped text, plus [text](https://link) links
+  .replace(/\[([^\]]+)\]\((https:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+  .replace(/Basilico/g, '<span class="bas">Basilico</span>');         // house style: the word Basilico is always yellow
+const faqAll = (fs.existsSync(path.join(root, 'data/faq.json')) ? read('data/faq.json') : { items: [] }).items || [];
+const faqHtml = faqAll.filter((x) => x.active !== false).map((x, i) => {
+  if (!x.question || !x.answer) { fail(`FAQ #${i + 1}: an active question needs both a question and an answer (untick "Show" to hide it)`); return ''; }
+  return `    <details>\n      <summary>${esc(x.question)}</summary>\n      <p>${rich(x.answer)}</p>\n    </details>`;
+}).join('\n');
+
+// ---------- contact details (data/contact.json) ----------
+const contact = fs.existsSync(path.join(root, 'data/contact.json')) ? read('data/contact.json') : {};
+const phone = (contact.phone || '').trim();
+const phoneLink = (contact.phone_link || contact.phone || '').trim();
+if (phone && !/^\+?[0-9 ()-]{6,20}$/.test(phone)) fail(`contact: phone looks wrong ("${phone}")`);
+if (phoneLink && !/^\+?[0-9 ()-]{6,20}$/.test(phoneLink)) fail(`contact: phone for tap-to-call looks wrong ("${phoneLink}")`);
+if (contact.email && !/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(contact.email)) fail(`contact: email looks wrong ("${contact.email}")`);
+for (const k of ['instagram', 'facebook']) if (contact[k] && !isHttps(contact[k])) fail(`contact: ${k} must be a full link starting with https://`);
+const phoneBr = phone ? `<br><a href="tel:${esc(phoneLink.replace(/[^+0-9]/g, ''))}">${esc(phone)}</a>` : '';
+const contactHtml = [
+  contact.email && `<li><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></li>`,
+  contact.instagram && `<li><a href="${esc(contact.instagram)}" target="_blank" rel="noopener">Instagram</a></li>`,
+  contact.facebook && `<li><a href="${esc(contact.facebook)}" target="_blank" rel="noopener">Facebook</a></li>`,
+].filter(Boolean).join('\n      ');
+const jsonStr = (v) => String(v || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+
+// ---------- closed dates (data/site.json -> closures), shown automatically by js/site.js ----------
+const closures = (site.closures || []).filter((c) => c && c.from && c.message);
+closures.forEach((c, i) => {
+  if (!isDate(c.from)) fail(`closed dates #${i + 1}: "From" must look like 2026-12-24`);
+  if (c.to && !isDate(c.to)) fail(`closed dates #${i + 1}: "To" must look like 2026-12-24`);
+  if (c.to && c.to < c.from) fail(`closed dates #${i + 1}: "To" is before "From"`);
+});
+const config = { timezone: site.timezone || 'Australia/Sydney', closures: closures.map((c) => ({ from: c.from, to: c.to || c.from, message: c.message, style: c.style === 'info' ? 'info' : 'alert' })) };
+const configHtml = `<script>window.SITE_CONFIG = ${JSON.stringify(config).replace(/</g, '\\u003c')};</script>`;
+
 if (errors.length) {
   console.error('\nBUILD STOPPED. Fix these in the CMS and save again (the live site is unchanged):\n');
   errors.forEach((e) => console.error('  • ' + e));
@@ -92,6 +130,8 @@ const skip = new Set(['dist', 'data', 'src', 'node_modules', '.git', '.pages.yml
 })(root, dist);
 
 let page = fs.readFileSync(path.join(root, 'src/index.template.html'), 'utf8');
-page = page.replace('    <!--MENU-->\n', menuHtml).replace('<!--HOURS-->', hoursHtml).replace('<!--NOTICE-->', noticeHtml);
+page = page.replace('    <!--MENU-->\n', menuHtml).replace('<!--HOURS-->', hoursHtml).replace('<!--NOTICE-->', noticeHtml)
+  .replace('<!--CONFIG-->', configHtml).replace('<!--FAQ-->', faqHtml).replace('<!--PHONE_BR-->', phoneBr).replace('<!--CONTACT-->', contactHtml)
+  .replace('%%LD_PHONE%%', jsonStr(phoneLink)).replace('%%LD_EMAIL%%', jsonStr(contact.email));
 fs.writeFileSync(path.join(dist, 'index.html'), page);
-console.log(`Built dist/ — ${cats.length} menu categories, hours OK${notice ? ', notice shown' : ''}.`);
+console.log(`Built dist/ — ${cats.length} menu categories, hours OK${notice ? ', notice shown' : ''}, ${faqAll.filter((x) => x.active !== false).length} FAQ, ${closures.length} closed-date rules.`);

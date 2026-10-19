@@ -19,7 +19,27 @@ if (GA_ID) {
   gtag('js', new Date()); gtag('config', GA_ID);
 }
 
+// Closed dates (from data/site.json via window.SITE_CONFIG): an automatic banner while a rule is active.
+const CFG = window.SITE_CONFIG || {};
+// Today's date (YYYY-MM-DD) in the business time zone. ?today=2026-12-25 previews another day (testing only).
+function todayKey() {
+  const q = new URLSearchParams(location.search).get('today');
+  if (q && /^\d{4}-\d{2}-\d{2}$/.test(q)) return q;
+  return new Intl.DateTimeFormat('en-CA', { timeZone: CFG.timezone || 'Australia/Sydney' }).format(new Date());
+}
+const within = (day, from, to) => (!from || day >= from) && (!to || day <= to);
+
 document.addEventListener('DOMContentLoaded', () => {
+  const activeClosure = (CFG.closures || []).find((c) => within(todayKey(), c.from, c.to));
+  if (activeClosure) {
+    const b = document.createElement('div');
+    b.className = `notice notice--${activeClosure.style === 'info' ? 'info' : 'alert'}`;
+    b.setAttribute('role', 'status');
+    b.textContent = activeClosure.message;
+    const hdr = document.querySelector('header');
+    (hdr || document.body).insertAdjacentElement(hdr ? 'afterend' : 'afterbegin', b);
+  }
+
   // Order buttons: "Order online" once ordering is live, otherwise "Book your event"
   document.querySelectorAll('.js-order').forEach((a) => {
     a.href = ORDER_URL || EVENT_URL;

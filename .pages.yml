@@ -6,7 +6,7 @@ media:
 
 content:
   - name: notice
-    label: "Banner message (e.g. closed today)"
+    label: "Banner message and closed dates"
     type: file
     path: data/site.json
     format: json
@@ -23,6 +23,80 @@ content:
               label: Info (green)
             - name: alert
               label: Important (red)
+      - name: closures
+        label: "Closed dates (the banner shows by itself on those days)"
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.from}  {fields.message}"
+        fields:
+          - name: from
+            label: "From (date, e.g. 2026-12-25)"
+            type: string
+          - name: to
+            label: "To (last day, e.g. 2026-12-26; same as From for one day)"
+            type: string
+          - name: message
+            label: Message shown
+            type: string
+          - name: style
+            label: Colour
+            type: select
+            options:
+              values:
+                - name: alert
+                  label: Important (red)
+                - name: info
+                  label: Info (green)
+
+  - name: contact
+    label: "Contact details"
+    type: file
+    path: data/contact.json
+    format: json
+    fields:
+      - name: phone
+        label: "Phone (as shown on the site, e.g. 0415 702 946)"
+        type: string
+      - name: phone_link
+        label: "Phone for tap-to-call (international, e.g. +61 415 702 946)"
+        type: string
+      - name: email
+        label: Email
+        type: string
+      - name: instagram
+        label: "Instagram link (https://...)"
+        type: string
+      - name: facebook
+        label: "Facebook link (https://...)"
+        type: string
+
+  - name: faq
+    label: "FAQ"
+    type: file
+    path: data/faq.json
+    format: json
+    fields:
+      - name: items
+        label: Questions
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.question}"
+        fields:
+          - name: question
+            label: Question
+            type: string
+            required: true
+          - name: answer
+            label: "Answer (a link: [text](https://...))"
+            type: text
+          - name: active
+            label: Show on the site (untick to hide)
+            type: boolean
+            default: true
 
   - name: hours
     label: Opening hours
