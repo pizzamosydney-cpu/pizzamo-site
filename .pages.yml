@@ -63,13 +63,25 @@ content:
         label: "Phone for tap-to-call (international, e.g. +61 415 702 946)"
         type: string
       - name: email
-        label: Email
+        label: "Email shown on the site (contact-form messages: see the guide)"
         type: string
       - name: instagram
-        label: "Instagram link (https://...)"
+        label: "Instagram link (https://..., empty = hidden)"
         type: string
       - name: facebook
-        label: "Facebook link (https://...)"
+        label: "Facebook link (https://..., empty = hidden)"
+        type: string
+      - name: tiktok
+        label: "TikTok link (https://..., empty = hidden)"
+        type: string
+      - name: youtube
+        label: "YouTube link (https://..., empty = hidden)"
+        type: string
+      - name: google
+        label: "Google Maps / reviews link (https://..., empty = hidden)"
+        type: string
+      - name: whatsapp
+        label: "WhatsApp link (https://wa.me/61..., empty = hidden)"
         type: string
 
   - name: faq

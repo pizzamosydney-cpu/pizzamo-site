@@ -92,12 +92,13 @@ const phoneLink = (contact.phone_link || contact.phone || '').trim();
 if (phone && !/^\+?[0-9 ()-]{6,20}$/.test(phone)) fail(`contact: phone looks wrong ("${phone}")`);
 if (phoneLink && !/^\+?[0-9 ()-]{6,20}$/.test(phoneLink)) fail(`contact: phone for tap-to-call looks wrong ("${phoneLink}")`);
 if (contact.email && !/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(contact.email)) fail(`contact: email looks wrong ("${contact.email}")`);
-for (const k of ['instagram', 'facebook']) if (contact[k] && !isHttps(contact[k])) fail(`contact: ${k} must be a full link starting with https://`);
+const SOCIALS = [['instagram', 'Instagram'], ['facebook', 'Facebook'], ['tiktok', 'TikTok'], ['youtube', 'YouTube'], ['google', 'Google Maps'], ['whatsapp', 'WhatsApp']];   // all optional: empty = not shown
+for (const [k] of SOCIALS) if (contact[k] && !isHttps(contact[k])) fail(`contact: ${k} must be a full link starting with https://`);
+const sameAs = SOCIALS.map(([k]) => contact[k]).filter(Boolean);
 const phoneBr = phone ? `<br><a href="tel:${esc(phoneLink.replace(/[^+0-9]/g, ''))}">${esc(phone)}</a>` : '';
 const contactHtml = [
   contact.email && `<li><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></li>`,
-  contact.instagram && `<li><a href="${esc(contact.instagram)}" target="_blank" rel="noopener">Instagram</a></li>`,
-  contact.facebook && `<li><a href="${esc(contact.facebook)}" target="_blank" rel="noopener">Facebook</a></li>`,
+  ...SOCIALS.map(([k, label]) => contact[k] && `<li><a href="${esc(contact[k])}" target="_blank" rel="noopener">${label}</a></li>`),
 ].filter(Boolean).join('\n      ');
 const jsonStr = (v) => String(v || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"');
 
@@ -132,6 +133,6 @@ const skip = new Set(['dist', 'data', 'src', 'node_modules', '.git', '.pages.yml
 let page = fs.readFileSync(path.join(root, 'src/index.template.html'), 'utf8');
 page = page.replace('    <!--MENU-->\n', menuHtml).replace('<!--HOURS-->', hoursHtml).replace('<!--NOTICE-->', noticeHtml)
   .replace('<!--CONFIG-->', configHtml).replace('<!--FAQ-->', faqHtml).replace('<!--PHONE_BR-->', phoneBr).replace('<!--CONTACT-->', contactHtml)
-  .replace('%%LD_PHONE%%', jsonStr(phoneLink)).replace('%%LD_EMAIL%%', jsonStr(contact.email));
+  .replace('%%LD_PHONE%%', jsonStr(phoneLink)).replace('%%LD_EMAIL%%', jsonStr(contact.email)).replace('%%LD_SAMEAS%%', JSON.stringify(sameAs));
 fs.writeFileSync(path.join(dist, 'index.html'), page);
 console.log(`Built dist/ — ${cats.length} menu categories, hours OK${notice ? ', notice shown' : ''}, ${faqAll.filter((x) => x.active !== false).length} FAQ, ${closures.length} closed-date rules.`);
