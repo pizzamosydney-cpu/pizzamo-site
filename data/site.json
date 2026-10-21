@@ -1,3 +1,4 @@
 {
-  "notice_style": "alert"
+  "notice": "oggi siamo chiusi",
+  "notice_style": "info"
 }
